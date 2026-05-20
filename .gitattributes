@@ -1,0 +1,54 @@
+* text=auto eol=lf
+
+gradlew text eol=lf
+*.sh  text eol=lf
+
+gradlew.bat text eol=crlf
+*.bat       text eol=crlf
+
+*.java       text eol=lf diff=java
+*.c          text eol=lf diff=cpp
+*.h          text eol=lf diff=cpp
+*.kt         text eol=lf diff=kotlin
+*.kts        text eol=lf diff=kotlin
+
+*.gradle     text eol=lf
+*.groovy     text eol=lf
+*.xml        text eol=lf
+*.json       text eol=lf
+*.yml        text eol=lf
+*.yaml       text eol=lf
+*.properties text eol=lf
+*.pro        text eol=lf
+*.md         text eol=lf
+*.txt        text eol=lf
+
+CMakeLists.txt text eol=lf
+
+*.png      binary
+*.9.png    binary
+*.jpg      binary
+*.jpeg     binary
+*.webp     binary
+*.ico      binary
+*.ogg      binary
+*.mp3      binary
+*.wav      binary
+*.jar      binary
+*.so       binary
+*.aar      binary
+*.apk      binary
+*.aab      binary
+*.keystore binary
+*.jks      binary
+
+gradle/wrapper/gradle-wrapper.jar binary
+
+.github/**           export-ignore
+.gitattributes       export-ignore
+.gitignore           export-ignore
+gradle/wrapper/**    export-ignore
+
+app/src/main/res/**    linguist-detectable=false
+app/src/main/assets/** linguist-detectable=false
+*.gradle               linguist-detectable=false

@@ -1,0 +1,55 @@
+name: Lint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    name: Android Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.13'
+          cache-read-only: false
+
+      - name: Install NDK
+        run: |
+          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager \
+            "ndk;27.2.12479018" \
+            "cmake;3.22.1"
+
+      - name: Run lint
+        run: gradle lint -Pci=true
+
+      - name: Upload lint HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-report
+          path: app/build/reports/lint-results.html
+          retention-days: 30
+
+      - name: Upload lint XML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-report-xml
+          path: app/build/reports/lint-results.xml
+          retention-days: 30
