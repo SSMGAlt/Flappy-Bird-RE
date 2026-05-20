@@ -1,4 +1,4 @@
-# Flappy Bird — Reverse Engineering Project
+# Flappy Bird: Reverse Engineering Project
 
 ![Lint](https://github.com/SSMGAlt/Flappy-Bird-RE/actions/workflows/lint.yml/badge.svg?branch=main)
 ![Build](https://github.com/SSMGAlt/Flappy-Bird-RE/actions/workflows/build.yml/badge.svg?branch=main)
@@ -180,9 +180,9 @@ To sign a release build, configure a keystore in `app/build.gradle` under `signi
 
 Two workflows run on every push and pull request to `main`.
 
-**Lint** — runs `gradle lint -Pci=true`. The `-Pci` flag enables `abortOnError`, causing the workflow to fail on any lint error. The HTML and XML reports are uploaded as artifacts on every run, including failures.
+**Lint** – runs `gradle lint -Pci=true`. The `-Pci` flag enables `abortOnError`, causing the workflow to fail on any lint error. The HTML and XML reports are uploaded as artifacts on every run, including failures.
 
-**Build** — installs SDK platform 36, NDK r27b, and CMake 3.22.1 via `sdkmanager`, then runs `gradle assembleRelease`. The unsigned APK is uploaded as a 90-day artifact named `flappybird-release-unsigned`.
+**Build** – installs SDK platform 36, NDK r27b, and CMake 3.22.1 via `sdkmanager`, then runs `gradle assembleRelease`. The unsigned APK is uploaded as a 90-day artifact named `flappybird-release-unsigned`.
 
 Both workflows require `app/libs/andengine.jar` to be present in the repository for compilation to succeed.
 
@@ -194,8 +194,8 @@ The original APK applied ProGuard renaming to the `com.dotgears` package. The ta
 
 | Obfuscated | Reconstructed | Role |
 |---|---|---|
-| `com.dotgears.a` | `AdShowRunnable` | Removed — original ad runnable |
-| `com.dotgears.b` | `AdHideRunnable` | Removed — original ad runnable |
+| `com.dotgears.a` | `AdShowRunnable` | Removed, original ad runnable |
+| `com.dotgears.b` | `AdHideRunnable` | Removed, original ad runnable |
 | `com.dotgears.c` | `FlappyScene` | AndEngine `Scene` and touch listener |
 | `com.dotgears.d` | `AnimationState` | Per-animation frame and timing state |
 | `com.dotgears.e` | `BlinkAnimation` | Bird eye-blink one-shot animation |
